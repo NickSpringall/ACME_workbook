@@ -1,4 +1,3 @@
-
 skills_score_list = {
     "python":"1",
     "ruby":"2",
@@ -14,19 +13,26 @@ user_skills_list = []
 more_skills_check = ""
 user_input = ""
 
+
 while more_skills_check != "no":
-    user_input = input("input a language you know: ")
+    user_input = input("input a skill you know: ").lower()
     if user_input in skills_score_list:
         if user_input in user_skills_list:
-            more_skills_check = input(f"You've already entered " + user_input + " as a skill, do you know any other languages? yes or no")
+            more_skills_check = input(f"You've already entered " + user_input + " as a skill, do you know any other languages? yes or no ")
+            while more_skills_check not in ("yes", "no"):
+                more_skills_check = input("do you know any other skills? yes or no ")
             continue
+
         user_skills_list.append(user_input)
         user_skills_score = int(user_skills_score) + int(skills_score_list[user_input])
-        more_skills_check = input("Great! do you have another language? Yes or No? ")
+        more_skills_check = input("Great! do you know another skill? Yes or No? ")
+        while more_skills_check not in ("yes", "no"):
+                more_skills_check = input("do you know any other languages? yes or no ")
+        continue
     else:
-        more_skills_check = input("sorry, that's not on the skills list do you know another language? Yes or No? ")
+        more_skills_check = input("sorry, that's not on the skills list do you know another skill? Yes or No? ")
 
-user_input = str(user_input)
+
 print("Your score skills score is " + str(user_skills_score) + "!")
 
 
